@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teoria Do Divino E Do Vazio</title>
+  <style class="correntes">/* BASE */
+  .gif-lateral-esq,
+  .gif-lateral-dir {
+  position: fixed;
+  top: 0;
+  width: 90px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 9;
+  pointer-events: none;
+}
+
+/* ELEMENTO INTERNO */
+.gif-lateral-esq::before,
+.gif-lateral-dir::before {
+  content: "";
+  position: absolute;
+
+  width: 100vh;
+  height: 90px;
+
+  background-image: url("https://blob.gifcities.org/gifcities/5Y42C7NQSSXGOPR2ST6XE77HAOBJ77WA.gif");
+  background-repeat: repeat-x;
+  background-size: auto 20%;
+
+  transform-origin: top left;
+}
+
+/* ESQUERDA */
+.gif-lateral-esq {
+  left: 0;
+}
+
+.gif-lateral-esq::before {
+  top: 0;
+  left: 0;
+  transform: rotate(90deg) translateY(-20%);
+}
+
+/* DIREITA */
+.gif-lateral-dir {
+  right: 0;
+}
+
+.gif-lateral-dir::before {
+  top: 0;
+  left: 0;
+  transform: rotate(90deg) translateY(-100%) scaleX(1);
+}</style><style class="image-wrapper2">
+
+      .image-wrapper2 {
+		width: 100%;
+  max-width: 30px;
+		  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-wrapper2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0px;
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.1s ease;
+        display: flex;
+        /* Transform origin at bottom center so it scales upward */
+        transform-origin: center;
+      }
+
+      .image-wrapper2:hover img {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 20px rgba(120, 0, 255, 4));
+		  cursor: url("content/Adesivo-1-scaled-e1774482549507.png"), auto;
+        z-index: 10;
+      }
+
+
+
+@media (hover: none) {
+  .image-wrapper2:hover img {
+    transform: none;
+    box-shadow: none;
+  }
+}</style><style class="image-wrapper">
+.wp-block-column {
+  display: flex;
+  justify-content: center;
+}
+
+      .image-wrapper {
+		width: 100%;
+  max-width: 400px;
+		  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0px;
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.1s ease;
+        display: flex;
+        /* Transform origin at bottom center so it scales upward */
+        transform-origin: center;
+      }
+
+      .image-wrapper:hover img {
+        transform: scale(1.03);
+        box-shadow: 0 0px 50px rgba(255,255,255, 0.2);
+        z-index: 10;
+      }
+
+	@media (hover: none) {
+  .image-wrapper:hover img {
+    transform: none;
+    box-shadow: none;
+  }
+}
+	@media (max-width: 768px) {
+  .image-wrapper {
+    max-width: 250px; /* 👈 diminui aqui */
+  }
+		@media (max-width: 768px) {
+  .image-wrapper img {
+    animation: floatGlow 3.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: scale(1) translateY(0px);
+    filter: drop-shadow(0 0 5px rgba(255,255,255, 0.2));
+  }
+
+  50% {
+    transform: scale(1.02) translateY(-6px);
+    filter: drop-shadow(0 0 15px rgba(120, 0, 255, 0.6));
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+    filter: drop-shadow(0 0 5px rgba(255,255,255, 0.2));
+  }
+}
+}</style>
+
+<style class="bg">
+  body {
+  background-color: #111111;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.bg {
+	pointer-events: none;
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation .2s infinite;
+  opacity: .9;
+  visibility: visible;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
+}</style></head><body class="home embed-responsive">
+  <div class="bg"></div>
+  <style class="bg"> *
+  {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 1px solid white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+	z-index: 9999;
+}
+
+@media (hover: none) {
+  .circle {
+    display: none;
+  }
+}</style><div class="circle"></div><style class="wp-fonts-local">
+</style>
+<link rel="icon" href="content/cropped-Adesivo-scaled-1-32x32.png" sizes="32x32">
+<link rel="icon" href="content/cropped-Adesivo-scaled-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="content/cropped-Adesivo-scaled-1-180x180.png">
+<meta name="msapplication-TileImage" content="content/cropped-Adesivo-scaled-1-270x270.png">
+
+
+
+
+<div class="site-blocks">
+<div class="block-columns is-layout-flex container-core-columns-is-layout-28f84493 block-columns-is-layout-flex">
+<div class="block-column is-layout-flow block-column-is-layout-flow">
+<div style="height:40px" aria-hidden="true" class="block-spacer"></div>
+</div>
+</div>
+
+
+
+<div class="block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 block-columns-is-layout-flex">
+<div class="block-column is-layout-flow block-column-is-layout-flow"></div>
+
+
+
+<div class="block-column is-layout-flow block-column-is-layout-flow">
+<div class="image-wrapper2">
+        <a href="navegaletrador.html"><img src="content/TPMBRQ73ZEJRV6NOAKQYXDI7BINKNUAN-ezgif.com-gif-to-webp-converter.webp" alt="olho"></a>
+      </div>
+</div>
+
+
+
+<div class="block-column is-layout-flow block-column-is-layout-flow">
+<div class="gif-lateral-esq"></div>
+<div class="gif-lateral-dir"></div>
+</div>
+</div>
+
+
+
+<div style="height:41px" aria-hidden="true" class="block-spacer"></div>
+
+
+
+<div class="block-columns are-vertically-aligned-center is-layout-flex container-core-columns-is-layout-28f84493 block-columns-is-layout-flex">
+<div class="block-column is-vertically-aligned-center is-layout-flow block-column-is-layout-flow">
+<div class="block-columns are-vertically-aligned-center is-layout-flex container-core-columns-is-layout-28f84493 block-columns-is-layout-flex">
+<div class="block-column is-vertically-aligned-center is-layout-flow block-column-is-layout-flow" style="flex-basis:100%">
+<div class="image-wrapper">
+  <a href="https://delfinozu.bandcamp.com/" target="_blank">
+    <img src="content/Teoria-Do-Divino-E-Do-Vazio-3-1-scaled.png" alt="Album">
+  </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style class="socials">
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 0;
+}
+
+.footer-socials a {
+  position: relative;
+  z-index: 1000;
+  display: inline-block; /* 👈 ESSENCIAL */
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* TEXTO */
+.footer-socials a:hover {
+  color: white;
+  letter-spacing: 3px;
+}
+
+/* EMOJI */
+.footer-socials a::after {
+  content: url("content/hehe.webp");
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px); /* 👈 evita ficar colado */
+
+  transform: translateX(-50%) translateY(5px);
+  opacity: 0;
+
+  transition: 0.3s ease;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* HOVER */
+.footer-socials a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}</style><footer class="footer-socials">
+	<a href="https://instagram.com/delfinozu" target="_blank" rel="noopener noreferrer">Instagram</a>
+</footer><script>console.clear();
+
+// Select the circle element
+const circleElement = document.querySelector('.circle');
+
+// Create objects to track mouse position and custom cursor position
+const mouse = { x: 0, y: 0 }; // Track current mouse position
+const previousMouse = { x: 0, y: 0 } // Store the previous mouse position
+const circle = { x: 0, y: 0 }; // Track the circle position
+
+// Initialize variables to track scaling and rotation
+let currentScale = 0; // Track current scale value
+let currentAngle = 0; // Track current angle value
+
+// Update mouse position on the 'mousemove' event
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+// Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
+const speed = 0.27;
+
+// Start animation
+const tick = (e) => {
+  // MOVE
+  // Calculate circle movement based on mouse position and smoothing
+  circle.x += (mouse.x - circle.x) * speed;
+  circle.y += (mouse.y - circle.y) * speed;
+  // Create a transformation string for cursor translation
+  const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+
+  // SQUEEZE
+  // 1. Calculate the change in mouse position (deltaMouse)
+  const deltaMouseX = mouse.x - previousMouse.x;
+  const deltaMouseY = mouse.y - previousMouse.y;
+  // Update previous mouse position for the next frame
+  previousMouse.x = mouse.x;
+  previousMouse.y = mouse.y;
+  // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
+  const mouseVelocity = Math.min(Math.sqrt(deltaMouseX**2 + deltaMouseY**2) * 4, 150); 
+  // 3. Convert mouse velocity to a value in the range [0, 0.5]
+  const scaleValue = (mouseVelocity / 150) * 0.5;
+  // 4. Smoothly update the current scale
+  currentScale += (scaleValue - currentScale) * speed;
+  // 5. Create a transformation string for scaling
+  const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+
+  // ROTATE
+  // 1. Calculate the angle using the atan2 function
+  const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+  // 2. Check for a threshold to reduce shakiness at low mouse velocity
+  if (mouseVelocity > 20) {
+    currentAngle = angle;
+  }
+  // 3. Create a transformation string for rotation
+  const rotateTransform = `rotate(${currentAngle}deg)`;
+
+  // Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
+  circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
+
+  // Request the next frame to continue the animation
+  window.requestAnimationFrame(tick);
+}
+
+// Start the animation loop
+tick();</script><script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.id = 'wp-skip-link';
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerText = 'Pular para o conteúdo';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+  
+</script>
+</div>
+</body>
+</html>
