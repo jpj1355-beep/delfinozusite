@@ -421,6 +421,10 @@ document.addEventListener("touchmove", (e) => {
   moveDrag(touch.clientX, touch.clientY);
 }, { passive: false });
 
+	document.addEventListener("touchmove", function(e) {
+  e.preventDefault();
+}, { passive: false });
+
 document.addEventListener("touchend", stopDrag);
 
 
