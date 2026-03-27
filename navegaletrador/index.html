@@ -41,12 +41,13 @@
 }</style>
 <style>
 body {
+	padding: 0;
   margin: 0;
   background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   font-family: "MS Sans Serif", Arial;
 }
 
@@ -416,11 +417,7 @@ document.addEventListener("touchmove", (e) => {
   const touch = e.touches[0];
   moveDrag(touch.clientX, touch.clientY);
 }, { passive: false });
-	const dragArea = document.getElementById("drag");
-document.addEventListener("touchend", stopDrag);
 
-
-  
 </script>
 
 <script>console.clear();
