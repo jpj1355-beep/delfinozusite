@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Letras</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style class="bg">
   body {
@@ -41,9 +42,8 @@
 }</style>
 <style>
 body {
-	padding: 0;
   margin: 0;
-  background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center/cover no-repeat;
+  background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
 }
 
 /* Desktop */
@@ -99,14 +98,15 @@ body {
 
 /* Janela */
 .window {
-  flex: 1;
+    flex: 1;
   width: min(90vw, 350px);
+  max-width: 350px;
   background: #c0c0c0;
   border: 2px solid #000;
   box-shadow: inset -2px -2px #fff, inset 2px 2px #808080;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 100px;
+  left: 100px;
   display: none;
 }
 
@@ -118,6 +118,7 @@ body {
   cursor: move;
   display: flex;
   justify-content: space-between;
+	touch-action: none;
 }
 
 /* Botão fechar */
@@ -360,66 +361,50 @@ function show(i) {
 }
 
 /* arrastar janela */
-let offsetX = 0, offsetY = 0;
-let isDragging = false;
+let offsetX = 0, offsetY = 0, isDown = false;
 
 const drag = document.getElementById("drag");
 
-/* FUNÇÃO UNIVERSAL */
-function startDrag(clientX, clientY) {
-  isDragging = true;
-  offsetX = win.offsetLeft - clientX;
-  offsetY = win.offsetTop - clientY;
-}
-
-function moveDrag(clientX, clientY) {
-  if (!isDragging) return;
-
-  let newX = clientX + offsetX;
-  let newY = clientY + offsetY;
-
-  const parent = document.querySelector(".browser-window");
-
-  const maxX = parent.clientWidth - win.offsetWidth;
-  const maxY = parent.clientHeight - win.offsetHeight;
-
-  if (newX < 0) newX = 0;
-  if (newY < 0) newY = 0;
-  if (newX > maxX) newX = maxX;
-  if (newY > maxY) newY = maxY;
-
-  win.style.left = newX + "px";
-  win.style.top = newY + "px";
-}
-
-function stopDrag() {
-  isDragging = false;
-}
-
-/* MOUSE */
 drag.addEventListener("mousedown", (e) => {
-  startDrag(e.clientX, e.clientY);
+  isDown = true;
+  offsetX = win.offsetLeft - e.clientX;
+  offsetY = win.offsetTop - e.clientY;
 });
+
+document.addEventListener("mouseup", () => isDown = false);
 
 document.addEventListener("mousemove", (e) => {
-  moveDrag(e.clientX, e.clientY);
-});
+  if (isDown) {
 
+    let newX = e.clientX + offsetX;
+    let newY = e.clientY + offsetY;
+
+    const maxX = 800 - win.offsetWidth;
+    const maxY = 500 - win.offsetHeight;
+
+    // trava dentro da tela
+    if (newX < 0) newX = 0;
+    if (newY < 0) newY = 0;
+    if (newX > maxX) newX = maxX;
+    if (newY > maxY) newY = maxY;
+
+    win.style.left = newX + "px";
+    win.style.top = newY + "px";
+
+  }
+	// mouse
+drag.addEventListener("mousedown", startDrag);
+document.addEventListener("mousemove", dragMove);
 document.addEventListener("mouseup", stopDrag);
 
-/* TOUCH (CELULAR) */
-drag.addEventListener("touchstart", (e) => {
-  const touch = e.touches[0];
-  startDrag(touch.clientX, touch.clientY);
+// touch
+drag.addEventListener("touchstart", startDrag, { passive: false });
+document.addEventListener("touchmove", dragMove, { passive: false });
+document.addEventListener("touchend", stopDrag);
 });
 
-document.addEventListener("touchmove", (e) => {
-  const touch = e.touches[0];
-  moveDrag(touch.clientX, touch.clientY);
-}, { passive: false });
 
-document.addEventListener("touchend", stopDrag);
-
+  
 </script>
 
 <script>console.clear();
@@ -440,13 +425,6 @@ let currentAngle = 0; // Track current angle value
 window.addEventListener('mousemove', (e) => {
   mouse.x = e.x;
   mouse.y = e.y;
-
-  const dragArea = document.getElementById("drag");
-
-dragArea.addEventListener("touchmove", function(e) {
-  e.stopPropagation(); // permite mover a janela sem scroll da página
-}, { passive: false });
-
 });
 
 // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
