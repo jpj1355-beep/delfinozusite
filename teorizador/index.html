@@ -82,12 +82,9 @@ body {
   width: 32px;
 }
 
-.img-gif {
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  display: block;
-  position: absolute;
+.Img-gif {
+  cursor: pointer;
+  cursor: url("content/Adesivo-1-scaled-e1774482549507.png"), auto;
   }
 
 .icon span {
@@ -147,8 +144,7 @@ li:hover {
   color: white;
 }
 
-/* Letras */
-#letras {
+#teoria {
   margin-top: 10px;
   background: white;
   color: black;
@@ -184,6 +180,7 @@ li:hover {
   padding: 2px 10px;
   font-weight: bold;
   cursor: pointer;
+  cursor: url("content/Adesivo-1-scaled-e1774482549507.png"), auto;
 }
 
 @keyframes flicker {
@@ -239,9 +236,10 @@ li:hover {
   <div class="window" id="win">
     <div class="title-bar" id="drag">
       <span>
-        <img class="Img-gif" src="https://blob.gifcities.org/gifcities/6HU7LHQZLALNQWOJXTTIBHFBNVLFKQPL.gif"style="padding-left: 10px; padding-top: 3px; display:absolute; width: 24px;"><img>
+        <img class="Img-gif"
+        src="https://blob.gifcities.org/gifcities/6HU7LHQZLALNQWOJXTTIBHFBNVLFKQPL.gif"style="padding-left: 10px; padding-top: 3px; display:absolute; width: 24px;" onclick="playRandomNote()"><img>
       </span>
-      <div class="close" style="padding-left: 12px; padding-top: 12px; display:relative;" onclick="closeWindow()">
+      <div class="close" style="padding-left: 12px; padding-top: 12px; display:relative;" onclick="closeWindow(), playKey()">
         <img src="https://blob.gifcities.org/gifcities/3J4YSGQLGONZ353SOSX6XE5HWH5SA2ST.gif" width="300" height="30" style="vertical-align:middle; margin: -12px -12px; padding-right: 16px; padding-top: 4px;">
       </div>
     </div>
@@ -258,7 +256,7 @@ li:hover {
   </div>
 
   <div class="taskbar">
-    <div class="start" onclick="toggleChaos()">
+    <div class="start" onclick="playGlitch(), toggleChaos()">
       <img src="https://blob.gifcities.org/gifcities/HSQGU7YBEPKSZQYB73IPKNQ7J4VYZG6P.gif"
     </div>
   </div>
@@ -385,8 +383,82 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
+let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-  
+function playRandomNote() {
+
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+
+  // Escala menor (A menor)
+  const notes = [
+    220.00, // A
+    246.94, // B
+    261.63, // C
+    293.66, // D
+    329.63, // E
+    349.23, // F
+    392.00  // G
+  ];
+
+  const randomNote = notes[Math.floor(Math.random() * notes.length)];
+
+  // Oscilador base
+  oscillator.type = "sawtooth"; // mais "sujo" que sine
+  oscillator.frequency.setValueAtTime(randomNote, audioCtx.currentTime);
+
+  // Filtro (efeito lo-fi)
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
+
+  // Gain
+  gainNode.gain.setValueAtTime(0.8, audioCtx.currentTime);
+
+  // Conexões
+  oscillator.connect(filter);
+  filter.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  oscillator.start();
+
+  // 🎛️ GLITCH: variação rápida de pitch
+  let glitch = setInterval(() => {
+    oscillator.frequency.setValueAtTime(
+      randomNote + (Math.random() * 10 - 5),
+      audioCtx.currentTime
+    );
+  }, 30);
+
+  // Fade out
+  gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+
+  oscillator.stop(audioCtx.currentTime + 0.6);
+
+  setTimeout(() => clearInterval(glitch), 600);
+}
+</script>
+
+<audio id="keySound" src="https://cdn.pixabay.com/download/audio/2026/03/22/audio_0ff175384b.mp3?filename=u_1thl5d0szy-memeclick-506437.mp3"></audio>
+
+<script>
+function playKey() {
+  const sound = document.getElementById("keySound");
+  sound.currentTime = 0; // permite repetir rápido
+  sound.play();
+}
+</script>
+
+<audio id="keyGlitch" src="https://assets.mixkit.co/active_storage/sfx/1457/1457-preview.mp3"></audio>
+
+<script>
+function playGlitch() {
+  const sound = document.getElementById("keyGlitch");
+  sound.currentTime = 0; // permite repetir rápido
+  sound.play();
+}
+</script>
+
 </script>
 
 <script>console.clear();
