@@ -448,13 +448,6 @@ dragArea.addEventListener("touchmove", function(e) {
 }, { passive: false });
 
 });
-	function setRealHeight() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-setRealHeight();
-window.addEventListener('resize', setRealHeight);
 
 // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
 const speed = 0.27;
