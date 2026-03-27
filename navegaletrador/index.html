@@ -424,6 +424,12 @@ document.addEventListener("touchmove", (e) => {
   e.preventDefault();
 }, { passive: false });
 
+	const dragArea = document.getElementById("drag");
+
+dragArea.addEventListener("touchmove", function(e) {
+  e.stopPropagation(); // permite mover a janela sem scroll da página
+}, { passive: false });
+
 document.addEventListener("touchend", stopDrag);
 
 
