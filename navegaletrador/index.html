@@ -43,11 +43,11 @@
 body {
 	padding: 0;
   margin: 0;
-  background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center;
+  background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   font-family: "MS Sans Serif", Arial;
 }
 
@@ -418,6 +418,8 @@ document.addEventListener("touchmove", (e) => {
   moveDrag(touch.clientX, touch.clientY);
 }, { passive: false });
 
+document.addEventListener("touchend", stopDrag);
+
 </script>
 
 <script>console.clear();
@@ -446,6 +448,13 @@ dragArea.addEventListener("touchmove", function(e) {
 }, { passive: false });
 
 });
+	function setRealHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+setRealHeight();
+window.addEventListener('resize', setRealHeight);
 
 // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
 const speed = 0.27;
