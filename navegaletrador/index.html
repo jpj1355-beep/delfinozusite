@@ -41,6 +41,10 @@
 }</style>
 <style>
 body {
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  touch-action: none; /* bloqueia gestos no mobile */
   margin: 0;
   background: url("https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.jpg") center;
   display: flex;
@@ -441,6 +445,13 @@ let currentAngle = 0; // Track current angle value
 window.addEventListener('mousemove', (e) => {
   mouse.x = e.x;
   mouse.y = e.y;
+
+  const dragArea = document.getElementById("drag");
+
+dragArea.addEventListener("touchmove", function(e) {
+  e.stopPropagation(); // permite mover a janela sem scroll da página
+}, { passive: false });
+
 });
 
 // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
