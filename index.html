@@ -86,7 +86,52 @@
         z-index: 10;
       }
 
+.site-footer{
+    width:100%;
+    padding:90px 20px 50px;
+    text-align:center;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#fff;
+    background:#000;
+}
 
+.footer-line{
+    width:70px;
+    height:1px;
+    background:#666;
+    margin:0 auto 35px;
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+    margin-bottom:18px;
+    font-size:.9rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.footer-links a{
+    color:#fff;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.footer-links a:hover{
+    opacity:.45;
+}
+
+.footer-links span{
+    color:#666;
+}
+
+.footer-copy{
+    color:#777;
+    font-size:.75rem;
+    letter-spacing:.08em;
+}
 
 @media (hover: none) {
   .image-wrapper2:hover img {
@@ -281,6 +326,19 @@
 </div>
 </div>
 </div>
+	<footer class="site-footer">
+    <div class="footer-line"></div>
+
+    <nav class="footer-links">
+        <a href="https://youtube.com/@" target="_blank">YouTube</a>
+        <span>•</span>
+        <a href="https://instagram.com/delfinozu" target="_blank">Instagram</a>
+    </nav>
+
+    <p class="footer-copy">
+        © 2026 Delfino Zu
+    </p>
+</footer>
 <script>console.clear();
 
 // Select the circle element
